@@ -8,7 +8,7 @@ import os
 from botocore.exceptions import ClientError
 from dateutil.relativedelta import relativedelta
 
-TODAY_DATE_FULL=str(date.today())
+TODAY_DATE_FULL=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
 logging.basicConfig(filename='Cost_Explorer_'+str(TODAY_DATE_FULL)+'.log', level=int(Level),
                     format='%(asctime)s:%(levelname)s:%(message)s',filemode='w')
 
@@ -90,4 +90,3 @@ os.system(copy)
 remove="rm "+str(FILENAME)
 os.system(remove)
 print("done")
-
