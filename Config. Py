@@ -1,1 +1,10 @@
-Keys=[["accountid1","accountname1"],["accountid2", "accountname2"]]
+account_details=[{"Account_Name": "dev","Account_ID": "094729572713","access_key":"AKIURGGBT47I","secret_access_key":"9sfpiNW/0ZZpXDBbYmT559fNQBHHt"},{"Account_Name": "mani439","Account_ID": "060515237759","access_key":"AKIARGBT47I","secret_access_key":"UieM/9sfNQBHHt"}]
+Level=20
+role="s3_cross_account"
+s3_bucket="s3://test-cost-demo-987/cost_logs/"
+#{"Account_Name": "prd","Account_ID": "690046498336"},
+#CRITICA 50
+#ERROR  40
+#WARNIN 30
+#INFO   20
+#DEBUG  10
