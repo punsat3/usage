@@ -2,7 +2,7 @@ import sys
 from datetime import datetime,timedelta,date
 import boto3
 import logging
-from config import *
+from Config import *
 import calendar
 import os
 from botocore.exceptions import ClientError
