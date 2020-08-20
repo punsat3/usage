@@ -1,13 +1,14 @@
+import sys
 from datetime import datetime,timedelta,date
 import boto3
 import logging
 from config import *
 import calendar
-import sys
 import os
 from botocore.exceptions import ClientError
 from dateutil.relativedelta import relativedelta
 
+WEEKNUMBER = date.today().isocalendar()[1]
 TODAY_DATE_FULL=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
 logging.basicConfig(filename='Cost_Explorer_'+str(TODAY_DATE_FULL)+'.log', level=int(Level),
                     format='%(asctime)s:%(levelname)s:%(message)s',filemode='w')
@@ -25,7 +26,7 @@ for x in account_details:
     #try to set profile withRole arn
     try:
         region="aws configure set default.region us-west-2"
-        profile="aws configure set profile." + x['Account_Name'] + ".role_arn arn:aws:iam::" + x['Account_ID'] + ":role/"+str(role)
+        profile="aws configure set profile." + x['Account_Name'] + ".role_arn arn:aws:iam::" + x['Account_ID'] + ":role/"+x['role']
         meta_data="aws configure set profile." + x['Account_Name'] + ".credential_source Ec2InstanceMetadata"
         os.system(region)
         os.system(profile)
@@ -73,9 +74,9 @@ for x in account_details:
 #Taking projection cost from forecast
 
     if TODAY_DATE_IN_DAY == LAST_DAY_OF_CURRENT_MONTH:
-        logging.info(str(sys.argv[0])+" : "+str(MONTH_NAME)+" months Projection cost for account "+ x['Account_Name'] +" ("+x['Account_ID']+") is : $"+str(MONTH_TO_DATE_COST))
-        f.write(str(MONTH_NAME)+" months Projection cost for account "+ x['Account_Name'] +" ("+x['Account_ID']+") is : $"+str(MONTH_TO_DATE_COST))
-
+        logging.info(str(sys.argv[0])+" : "+str(MONTH_NAME)+" months Projection cost for account "+ x['Account_Name'] +" ("+x['Account_ID']+") is : $"+str(MONTH_TO_DATE_COST)+" \n")
+        f.write(str(MONTH_NAME)+" months Projection cost for account "+ x['Account_Name'] +" ("+x['Account_ID']+") is : $"+str(MONTH_TO_DATE_COST)+" \n")
+        f.write("\n")
     else:
         forecast_response = ce_client.get_cost_forecast(TimePeriod={'Start': TOMORROW_DAY_DATE,'End': NEXT_MONTH_FIRST_DATE},Metric='BLENDED_COST',Granularity='MONTHLY',PredictionIntervalLevel=99)
         fnum2=str(forecast_response['Total']['Amount'])
@@ -85,8 +86,11 @@ for x in account_details:
         f.write("\n")
 
 f.close()
-copy="aws s3 cp "+str(FILENAME)+" "+s3_bucket
-os.system(copy)
+#copy="aws s3 cp "+str(FILENAME)+" "+s3_bucket
+#os.system(copy)
+f = open(FILENAME, "r")
+report=f.read()
 remove="rm "+str(FILENAME)
 os.system(remove)
 print("done")
+
