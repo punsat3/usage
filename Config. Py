@@ -1,7 +1,8 @@
-account_details=[{"Account_Name": "dev","Account_ID": "094729572713","access_key":"AKIURGGBT47I","secret_access_key":"9sfpiNW/0ZZpXDBbYmT559fNQBHHt"},{"Account_Name": "mani439","Account_ID": "060515237759","access_key":"AKIARGBT47I","secret_access_key":"UieM/9sfNQBHHt"}]
+account_details=[{"Account_Name": "Ingestions","Account_ID": "348963937654","access_key":"AKIURGGBT47I","secret_access_key":"9sfpiNW/0ZZpXDBbYmT559fNQBHHt","role":"Trusting_Cross_Account_Cost_Explorer"},{"Account_Name": "Prod","Account_ID": "364976798220","access_key":"AKIARGBT47I","secret_access_key":"UieM/9sfNQBHHt","role":"dmi_ec2_tags"},{"Account_Name": "QA","Account_ID": "107577486276","access_key":"AKIURGGBT47I","secret_access_key":"9sfpiNW/0ZZpXDBbYmT559fNQBHHt","role":"Trusting_Cross_Account_Cost_Explorer"},{"Account_Name": "Dev","Account_ID": "648418008839","access_key":"AKIURGGBT47I","secret_access_key":"9sfpiNW/0ZZpXDBbYmT559fNQBHHt","role":"Trusting_Cross_Account_Cost_Explorer"}]
 Level=20
-role="s3_cross_account"
-s3_bucket="s3://test-cost-demo-987/cost_logs/"
+#role="cross_ce"
+#s3_bucket="s3://punsat/sat/"
+#s3_bucket="s3://test-cost-demo-987/cost_logs/"
 #{"Account_Name": "prd","Account_ID": "690046498336"},
 #CRITICA 50
 #ERROR  40
