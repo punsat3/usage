@@ -7,4 +7,4 @@ root_vl_size   =  "8"
 key_name       =  "satya" 
 user_data      =  "install_apache.sh"
 sgs            =  ["sg-05711d6d6baa46ec4"]
-tags = { Name = "satya", Environment = "production"}
+tags           =  { " Name ":"satya", "Environment":"production"}
