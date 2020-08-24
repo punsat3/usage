@@ -1,3 +1,5 @@
+aws_access_key = 
+aws_secret_key =
 region         =  "us-west-2"
 ami_id         =  "ami-0873b46c45c11058d"
 instance_type  =  "t2.micro"
